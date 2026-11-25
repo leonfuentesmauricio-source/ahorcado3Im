@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Ahorcado: Patria Milagro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="lamp" aria-hidden="true"></div>
+<button id="btn-sonido" class="sound" aria-pressed="true">Sonido: sí</button>
+
+<main>
+  <!-- PANTALLA INICIAL -->
+  <section id="pantalla-inicio" class="pantalla activa">
+    <h1>Patria Milagro</h1>
+    <p class="sub">El juego del Ahorcado</p>
+    <p class="intro">La puerta se cerró detrás de ti. Sobre la mesa hay un reloj y una palabra oculta. Tienes tres minutos para descubrirla.</p>
+    <label for="nombre">Ingresa tu nombre</label>
+    <input id="nombre" type="text" maxlength="20" autocomplete="off" placeholder="Jugador">
+    <ul class="reglas">
+      <li>Tiempo disponible: <b>3 minutos</b>.</li>
+      <li>Tienes <b>7 intentos</b>. Cada letra incorrecta cuesta uno.</li>
+      <li>Las mayúsculas y minúsculas son letras distintas.</li>
+      <li>Una letra repetida no se cuenta, pero tampoco se perdona el tiempo.</li>
+    </ul>
+    <button id="btn-iniciar" class="principal">INICIAR JUEGO</button>
+  </section>
+
+  <!-- PANTALLA DE JUEGO -->
+  <section id="pantalla-juego" class="pantalla">
+    <header class="barra">
+      <div id="saludo"></div>
+      <div id="reloj" class="reloj" role="timer" aria-live="off">03:00</div>
+    </header>
+
+    <div class="escena">
+      <svg viewBox="0 0 120 150" id="patibulo" aria-label="Progreso de errores">
+        <line class="parte" data-e="1" x1="10" y1="140" x2="80" y2="140"/>
+        <line class="parte" data-e="2" x1="30" y1="140" x2="30" y2="10"/>
+        <line class="parte" data-e="3" x1="30" y1="10" x2="85" y2="10"/>
+        <line class="parte" data-e="4" x1="85" y1="10" x2="85" y2="30"/>
+        <circle class="parte" data-e="5" cx="85" cy="42" r="12"/>
+        <line class="parte" data-e="6" x1="85" y1="54" x2="85" y2="95"/>
+        <path class="parte" data-e="7" d="M85 65 L68 82 M85 65 L102 82 M85 95 L70 125 M85 95 L100 125"/>
+      </svg>
+      <div class="panel">
+        <p id="pista" class="pista">Pista corta: Sirve para traer cosas que necesitamos para nuestro programa. (la palabra es en inglés) Una de las letras es minúscula.</p>
+        <div id="palabra" class="palabra" aria-live="polite"></div>
+        <p class="datos">Incorrectas: <span id="incorrectas">[]</span></p>
+        <p class="datos">Intentos restantes: <b id="intentos">7</b></p>
+        <div class="progreso"><div id="barra-progreso"></div></div>
+        <p id="mensaje" class="mensaje" aria-live="assertive"></p>
+      </div>
+    </div>
+
+    <div id="teclado" class="teclado"></div>
+  </section>
+
+  <!-- PANTALLA FINAL -->
+  <section id="pantalla-final" class="pantalla">
+    <h2 id="final-titulo"></h2>
+    <p id="final-texto" class="intro"></p>
+    <div id="final-revelacion">
+      <p class="revela">La palabra era</p>
+      <div id="final-palabra" class="palabra"></div>
+    </div>
+    <button id="btn-reiniciar" class="principal">JUGAR DE NUEVO</button>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
